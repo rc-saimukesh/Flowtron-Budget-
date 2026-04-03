@@ -30,7 +30,9 @@ export default function DashboardPage() {
   const month = getCurrentMonth();
   const summary = getMonthSummary(month);
   const monthTxns = getTransactionsByMonth(state.transactions, month);
-  const recent = monthTxns.slice(0, 5);
+  const recent = [...monthTxns]
+  .sort((a, b) => `${b.date}${b.time}`.localeCompare(`${a.date}${a.time}`))
+  .slice(0, 5);
 
   const monthLabel = new Date().toLocaleDateString("en-IN", {
     month: "long",

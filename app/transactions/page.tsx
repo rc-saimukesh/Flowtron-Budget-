@@ -36,7 +36,9 @@ function groupByDay(transactions: Transaction[]) {
         month: "long",
         year: "numeric",
       }),
-      transactions: txns,
+      transactions: txns.sort((a, b) =>
+        `${b.date}${b.time}`.localeCompare(`${a.date}${a.time}`)
+      ),
       totalExpenses: getTotalExpenses(txns),
       totalIncome: getTotalIncome(txns),
     }));
@@ -58,7 +60,9 @@ function groupByMonth(transactions: Transaction[]) {
           "en-IN",
           { month: "long", year: "numeric" }
         ),
-        transactions: txns,
+        transactions: txns.sort((a, b) =>
+          `${b.date}${b.time}`.localeCompare(`${a.date}${a.time}`)
+        ),
         totalExpenses: getTotalExpenses(txns),
         totalIncome: getTotalIncome(txns),
       };
@@ -76,7 +80,9 @@ function groupByYear(transactions: Transaction[]) {
     .sort(([a], [b]) => b.localeCompare(a))
     .map(([key, txns]) => ({
       label: key,
-      transactions: txns,
+      transactions: txns.sort((a, b) =>
+        `${b.date}${b.time}`.localeCompare(`${a.date}${a.time}`)
+      ),
       totalExpenses: getTotalExpenses(txns),
       totalIncome: getTotalIncome(txns),
     }));
