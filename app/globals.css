@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Manrope', sans-serif;
+
+  /* Colors */
+  --color-surface: #fcf9f7;
+  --color-surface-low: #f6f3f1;
+  --color-surface-mid: #e5e2e0;
+  --color-surface-dim: #d3c3b9;
+  --color-primary: #000b10;
+  --color-primary-container: #10232a;
+  --color-secondary: #3d4d55;
+  --color-on-surface: #374951;
+  --color-on-surface-muted: #a79e9c;
+  --color-accent: #b58863;
+  --color-accent-light: #f5ede4;
+  --color-tertiary: #ebe0de;
+  --color-tertiary-dark: #1f1a19;
+  --color-danger: #c0392b;
+  --color-danger-light: #fdf0ee;
+  --color-success: #2d6a4f;
+  --color-success-light: #edf7f2;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  /* Shadows */
+  --shadow-warm: 0 12px 40px rgba(125, 86, 53, 0.08);
+  --shadow-warm-sm: 0 4px 16px rgba(125, 86, 53, 0.06);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, #000b10, #10232a);
+  }
+  .glass {
+    background: rgba(252, 249, 247, 0.7);
+    backdrop-filter: blur(24px);
+  }
+  .text-display {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .text-editorial {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .label-engraved {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d3c3b9;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a79e9c;
+}
+
+/* Number input — hide arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+}
+
+/* Date/time input — normalize */
+input[type="date"],
+input[type="time"] {
+  color-scheme: light;
+}
+
+/* Selection color */
+::selection {
+  background: #b58863;
+  color: white;
+}
+
+/* Nav link active indicator */
+@layer utilities {
+  .nav-active-dot::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #b58863;
+    border-radius: 999px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+}
